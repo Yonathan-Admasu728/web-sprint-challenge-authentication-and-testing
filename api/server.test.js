@@ -19,22 +19,14 @@ test('sanity', () => {
 })
 describe('[POST] /register', () => {
   it('returns a status 201 CREATED', async () => {
-    const res = await request(server).post('/users').send({
-      "username": "Captain Marvel", "password": "foobar" 
-    })
+    const res = await request(server).post('/register').send({name: 'yonathan' })
     expect(res.status).toBe(201)
   })
   it('returns newly created user', async () => {
-    const res = await request(server).post('/users').send({
-      "id": 1,
-      "username": "Captain Marvel",
-      "password": "2a$08$jG.wIGR2S4hxuyWNcBf9MuoC4y0dNy7qC/LbmtuFBSdIhWks2LhpG"
-    })
+    const res = await request(server).post('/register').send({name: 'yonathan'})
     // console.log(res)
     expect(res.body).toMatchObject({
-      "id": 1,
-      "username": "Captain Marvel",
-      "password": "2a$08$jG.wIGR2S4hxuyWNcBf9MuoC4y0dNy7qC/LbmtuFBSdIhWks2LhpG"
+      id: 4, name: 'yonathan'
     })
   })
 })
